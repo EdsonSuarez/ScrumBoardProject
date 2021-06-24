@@ -1,1 +1,61 @@
-<p>list-user works!</p>
+<div class="bg-component">
+  <div class="accordion_display">
+    <div class="accordion_size">
+      <div class="col-12 col-lg-12" *ngIf="successMessage">
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <div class="alert-message">
+            {{ successMessage }}
+          </div>
+
+          <button
+            type="button"
+            class="close"
+            (click)="closeX()"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">X</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-lg-12" *ngIf="errorMessage">
+        <div
+          class="alert alert-danger alert-dismissible alertJustify"
+          role="alert"
+        >
+          <div class="alert-message">
+            {{ errorMessage }}
+          </div>
+          <button
+            type="button"
+            class="close alertButton"
+            (click)="closeX()"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">X</span>
+          </button>
+        </div>
+      </div>
+      <mat-accordion multi="true" *ngIf="usersData.length">
+        <mat-expansion-panel *ngFor="let task of usersData" hideToggle="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <span class="text_center">{{ task.name }}</span>
+              <span class="spacer"></span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            {{ task.email }}
+          </mat-panel-description>
+          <mat-action-row>
+            <span class="spacer"></span>
+            <mat-icon color="primary" (click)="deleteUser(task)">
+              delete
+            </mat-icon>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

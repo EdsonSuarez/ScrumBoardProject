@@ -140,6 +140,6 @@ router.delete("/deleteUser/:_id", Auth, UserAuth, AdminAuth, async (req, res) =>
   const users = await User.findByIdAndDelete(req.params._id);
   if (!users) return res.status(401).send("Failed to delete user");
   
-  return res.status(200).send("User deleted");
+  return res.status(200).send({message: "User deleted"});
 });
 module.exports = router;
