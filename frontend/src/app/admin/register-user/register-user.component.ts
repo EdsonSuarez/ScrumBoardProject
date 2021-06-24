@@ -11,6 +11,8 @@ export class RegisterUserComponent implements OnInit {
 
   public dataUser: any;
   public errorMessage: String;
+  public hide = true; 
+  
   constructor(private admin: AdminService, private router: Router) { 
     this.dataUser = {};
     this.errorMessage = '';

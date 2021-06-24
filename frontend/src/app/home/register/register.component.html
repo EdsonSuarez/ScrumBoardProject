@@ -2,13 +2,13 @@
     <mat-card class="card">
       <mat-card-title> Register user </mat-card-title>
       <div class="col-12 col-lg-12" *ngIf="errorMessage">
-        <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert alert-danger alert-dismissible alertJustify" role="alert">
           <div class="alert-message">
             {{ errorMessage }}
           </div>
           <button
             type="button"
-            class="close"
+            class="close alertButton"
             (click)="closeX()"
             data-dismiss="alert"
             aria-label="Close"
