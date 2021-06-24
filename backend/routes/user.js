@@ -48,23 +48,23 @@ router.post("/registerAdmin", Auth, UserAuth, AdminAuth, async (req, res) => {
     !req.body.password ||
     !req.body.roleId
   )
-    return res.status(400).send("Process failed: Incomplete data");
-
-  const validId = mongoose.Types.ObjectId.isValid(req.body.roleId);
-  if (!validId) return res.status(401).send("Process failed: Invalid id");
-
+  return res.status(400).send("Process failed: Incomplete data");
+  
   let user = await User.findOne({ email: req.body.email });
   if (user)
     return res
       .status(401)
       .send("Process failed: The user is already registered");
-  
+
+  const validRol = await Role.findOne({name: req.body.roleId})
+  if(!validRol) return res.status(401).send("Invlaid role")      
+
   const hash = await bcrypt.hash(req.body.password, 10);
   user = new User({
     name: req.body.name,
     email: req.body.email,
     password: hash,
-    roleId: req.body.roleId,
+    roleId: validRol._id,
     active: true,
   });
 

@@ -30,6 +30,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminService } from "./services/admin.service";
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -62,11 +64,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSelectModule,
   ],
   providers: [
     AuthService,
     BoardService,
     AuthGuard,
+    AdminService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
