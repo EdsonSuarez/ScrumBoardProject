@@ -30,7 +30,7 @@ login() {
         (res: any) => {
           console.log(res);
           localStorage.setItem('token', res.jwtToken);
-          if(res.admin) {
+          if(this.auth.isAdmin()) {
             localStorage.setItem('perfil', 'isAdmin');
             this.router.navigate(['/registerUser']);
           }else{

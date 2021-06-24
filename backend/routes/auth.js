@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 router.post("/login", async (req, res) => {
   let admin = false;
   const user = await User.findOne({ email: req.body.email })
-    .populate("roleId")
+    .populate("roleId", "name")
     .exec();
   if (!user) return res.status(400).send("Incorrect email or password");
   const hash = await bcrypt.compare(req.body.password, user.password);
