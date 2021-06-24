@@ -22,7 +22,6 @@ userSchema.methods.generateJWT = function () {
       email: this.email,
       roleId: this.roleId,
       iat: moment().unix(),
-      
     },
     process.env.SECRET_kEY_JWT
   );

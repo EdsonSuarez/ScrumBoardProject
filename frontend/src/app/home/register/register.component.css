@@ -27,3 +27,13 @@
   .colorButton{
       background-color: #646464;
   }
+
+  .alertJustify{
+    display: flex;
+    justify-content: space-between;
+  }
+
+.alertButton{
+    border-radius: 5px;
+    background-color: #646464;
+  }
