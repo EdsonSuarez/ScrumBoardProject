@@ -21,7 +21,6 @@ userSchema.methods.generateJWT = function () {
       name: this.name,
       email: this.email,
       roleId: this.roleId,
-      roleName: this.roleName,
       iat: moment().unix(),
       
     },

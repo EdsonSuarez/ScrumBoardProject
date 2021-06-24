@@ -13,12 +13,9 @@ router.post("/login", async (req, res) => {
   const hash = await bcrypt.compare(req.body.password, user.password);
   if (!hash || !user.active)
     return res.status(400).send("Incorrect email or password");
-
-  if (user.roleId.name === "admin") admin = true;
-
   try {
     const jwtToken = user.generateJWT();
-    return res.status(200).send({ jwtToken, admin: admin });
+    return res.status(200).send({ jwtToken});
   } catch (error) {
     return res.status(400).send("Login error");
   }

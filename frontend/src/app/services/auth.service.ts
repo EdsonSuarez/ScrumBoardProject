@@ -37,7 +37,7 @@ export class AuthService {
       let jwtData = jwtToken.split('.')[1];
       let decodedJwtJsonData = window.atob(jwtData)
       let decodedJwtData = JSON.parse(decodedJwtJsonData)
-      return (decodedJwtData.roleName !== 'admin') ? false : true;
+      return (decodedJwtData.roleId.name !== 'admin') ? false : true;
     }
 }
   
