@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public loginData: any;
   public errorMessage: String;
+  public hide = true;
 
   constructor(private auth: AuthService, private router: Router) {
     this.loginData = {};

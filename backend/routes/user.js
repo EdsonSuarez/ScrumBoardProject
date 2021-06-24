@@ -28,6 +28,7 @@ router.post("/registerUser", async (req, res) => {
     email: req.body.email,
     password: hash,
     roleId: role._id,
+    roleName: role.name,
     active: true,
   });
 
@@ -35,7 +36,7 @@ router.post("/registerUser", async (req, res) => {
     const result = await user.save();
   if (!result) return res.status(401).send("Failed to register user")
   const jwtToken = user.generateJWT();
-  res.status(200).send({ jwtToken, admin: false });
+  res.status(200).send({ jwtToken});
   } catch (error) {
     return res.status(400).send("Failed to register user");
   }  

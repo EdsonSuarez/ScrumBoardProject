@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   roleId: { type: mongoose.Schema.ObjectId, ref: "role" },
+  roleName: {type: String, ref:"role"},
   active: Boolean,
   date: { type: Date, default: Date.now },
 });
@@ -20,6 +21,7 @@ userSchema.methods.generateJWT = function () {
       name: this.name,
       email: this.email,
       roleId: this.roleId,
+      roleName: this.roleName,
       iat: moment().unix(),
       
     },

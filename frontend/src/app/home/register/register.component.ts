@@ -11,6 +11,7 @@ export class RegisterComponent implements OnInit {
   public registerData: any;
   public successMessage: String;
   public errorMessage: string;
+  public hide = true;
 
   constructor(private auth: AuthService, private router: Router) {
     this.registerData = {};

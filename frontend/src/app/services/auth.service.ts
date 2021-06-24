@@ -28,9 +28,18 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  getPerfil() {
-    return !!localStorage.getItem('perfil');
-  }
+  isAdmin(){
+    let jwtToken = localStorage.getItem('token');
+    if (jwtToken == null){
+      return
+    } 
+    else {
+      let jwtData = jwtToken.split('.')[1];
+      let decodedJwtJsonData = window.atob(jwtData)
+      let decodedJwtData = JSON.parse(decodedJwtJsonData)
+      return (decodedJwtData.roleName !== 'admin') ? false : true;
+    }
+}
   
   logout() {
     localStorage.removeItem('token');
