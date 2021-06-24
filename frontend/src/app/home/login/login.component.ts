@@ -29,6 +29,9 @@ login() {
         (res: any) => {
           console.log(res);
           localStorage.setItem('token', res.jwtToken);
+          if(res.admin) {
+            localStorage.setItem('perfil', 'isAdmin');
+          }
           this.router.navigate(['/listTasks']);
         },
         (err) => {

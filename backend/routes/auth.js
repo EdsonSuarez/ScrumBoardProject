@@ -5,14 +5,20 @@ const bcrypt = require("bcrypt");
 
 // Login user
 router.post("/login", async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
+  let admin = false;
+  const user = await User.findOne({ email: req.body.email })
+    .populate("roleId")
+    .exec();
   if (!user) return res.status(400).send("Incorrect email or password");
   const hash = await bcrypt.compare(req.body.password, user.password);
   if (!hash || !user.active)
     return res.status(400).send("Incorrect email or password");
+
+  if (user.roleId.name === "admin") admin = true;
+
   try {
     const jwtToken = user.generateJWT();
-    return res.status(200).send({ jwtToken });
+    return res.status(200).send({ jwtToken, admin: admin });
   } catch (error) {
     return res.status(400).send("Login error");
   }

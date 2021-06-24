@@ -27,9 +27,14 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('token');
   }
+
+  getPerfil() {
+    return !!localStorage.getItem('perfil');
+  }
   
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem("perfil");
     this.router.navigate(['/login']);
   }
 }
