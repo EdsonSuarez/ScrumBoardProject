@@ -24,6 +24,7 @@ export class AdminService {
     return this.http.get<any>(this.env + `user/getUser/${id}`);
   }
 
+<<<<<<< HEAD
   updateUser(user: any) {
     return this.http.put<any>(this.env + 'user/updateUser', user);
   }
@@ -34,5 +35,26 @@ export class AdminService {
 
   emailUser(email: String) {
     return this.http.get<any>(this.env + `user/emailUser/${email}`);
+=======
+  updateUser(user: any){
+    return this.http.put<any>(this.env + 'user/updateUser', user);
   }
+
+  deleteUser(user: any){
+    return this.http.delete<any>(this.env + 'user/deleteUser/' + user._id)
+>>>>>>> 197dbc2cba9fae2532a65f502810a74d2a106bb8
+  }
+
+  listRole() {
+    return this.http.get<any>(this.env + "role/listRole");
+  }
+
+  registerRole(role: any){
+    return this.http.post<any>(this.env + 'role/registerRole', role);
+  }
+  
+  deleteRole(role: any){
+    return this.http.put<any>(this.env + 'role/deleteRole', role);
+  }
+  
 }
