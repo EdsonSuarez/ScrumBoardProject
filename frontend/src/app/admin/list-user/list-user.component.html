@@ -38,19 +38,43 @@
         </div>
       </div>
       <mat-accordion multi="true" *ngIf="usersData.length">
-        <mat-expansion-panel *ngFor="let task of usersData" hideToggle="false">
+        <mat-expansion-panel
+          *ngFor="let user of usersData"
+          hideToggle="false"
+          [ngClass]="{ active: user.active, noActive: !user.active }"
+        >
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <span class="text_center">{{ task.name }}</span>
+              <span class="text_center">{{ user.name }}</span>
               <span class="spacer"></span>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-panel-description>
-            {{ task.email }}
+            <ul>
+              {{
+                user.email
+              }}
+            </ul>
+            <ul>
+              {{
+                user.active
+              }}
+            </ul>
+            <ul>
+              {{
+                user.date
+              }}
+            </ul>
+            <span class="spacer"></span>
+            <ul>
+              {{
+                user.roleId.name
+              }}
+            </ul>
           </mat-panel-description>
           <mat-action-row>
             <span class="spacer"></span>
-            <mat-icon color="primary" (click)="deleteUser(task)">
+            <mat-icon color="primary" (click)="deleteUser(user)">
               delete
             </mat-icon>
           </mat-action-row>

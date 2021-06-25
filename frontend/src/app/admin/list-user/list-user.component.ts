@@ -19,12 +19,9 @@ export class ListUserComponent implements OnInit {
   ngOnInit(): void {
     this.admin.listUsers().subscribe(
       (res) => {
-        console.log(res.users);
-
         this.usersData = res.users;
       },
       (err) => {
-        console.log(err.error);
       }
     );
   }
