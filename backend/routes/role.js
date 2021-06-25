@@ -30,8 +30,14 @@ router.get("/listRole", Auth, UserAuth, AdminAuth, async (req, res) => {
   return res.status(200).send({ role });
 });
 
-router.put("/updateRole", Auth, UserAuth, AdminAuth, async (req, res) => {
-  if (!req.body._id || !req.body.name || !req.body.description)
+router.get("/getRole/:_id", Auth, UserAuth, AdminAuth, async (req, res) => {
+  const role = await Role.findById(req.params._id);
+  if (!role) return res.status(401).send("No roles");
+  return res.status(200).send({ role });
+});
+
+router.put("/updateRole/", Auth, UserAuth, AdminAuth, async (req, res) => {
+  if ( !req.body.name || !req.body.description)
     return res.status(401).send("Process failed: Incomplete data");
 
   let validId = mongoose.Types.ObjectId.isValid(req.body._id);

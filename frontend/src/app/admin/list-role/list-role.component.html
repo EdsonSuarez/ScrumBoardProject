@@ -38,7 +38,7 @@
                 <p *ngIf="rol.active == true" >Status: &nbsp; <span class="active"> {{ rol.active }}</span></p>
                 <p *ngIf="rol.active == false" >Status: &nbsp; <span class="deactive"> {{ rol.active }}</span></p>
                 <span class="spacer"></span>
-                <mat-icon color="primary" class="edit">edit</mat-icon>
+                <mat-icon color="primary" class="edit" routerLink="/updateRole/{{rol._id}}">edit</mat-icon>
                 <mat-icon color="primary" class="delete" (click)="deleteRol(rol)">delete</mat-icon>
             </div>   
         </mat-card>

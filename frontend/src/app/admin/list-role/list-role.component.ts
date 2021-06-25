@@ -23,11 +23,9 @@ export class ListRoleComponent implements OnInit {
   ngOnInit(): void {
     this.admin.listRole().subscribe(
       (res)=>{
-        console.log(res);
         this.rolesData = res.role;
       },
       (err)=>{
-        console.log(err);
         this.errorMessage = err.error;
         this.closeAlert();
       }
@@ -42,13 +40,11 @@ export class ListRoleComponent implements OnInit {
     }else{
       this.admin.deleteRole(task).subscribe(
         (res)=>{
-          console.log(res);
           task.active = false;  
           this.successMessage = 'Role Delete';
           this.closeAlert();        
         },
         (err)=>{
-          console.log(err)
           this.errorMessage = err.error;
           this.closeAlert();  
         }

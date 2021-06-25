@@ -40,6 +40,10 @@ export class AdminService {
     return this.http.get<any>(this.env + 'role/listRole');
   }
 
+  getRole(id: String) {
+    return this.http.get<any>(this.env + `role/getRole/${id}`);
+  }
+
   registerRole(role: any) {
     return this.http.post<any>(this.env + 'role/registerRole', role);
   }
