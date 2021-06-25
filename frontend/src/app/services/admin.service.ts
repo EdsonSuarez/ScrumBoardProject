@@ -32,4 +32,7 @@ export class AdminService {
     return this.http.get<any>(this.env + "role/listRole");
   }
 
+  registerRole(role: any){
+    return this.http.post<any>(this.env + 'role/registerRole', role);
+  }
 }
