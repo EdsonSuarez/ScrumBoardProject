@@ -1,0 +1,41 @@
+.spacer {
+    flex: 1 0 auto;
+}
+
+.mat-icon {
+    padding-right: 15px;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.container{    
+    padding-top: 50px;
+}
+
+.card{
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    margin: 30px;
+    background-color: rgb(70, 156, 156);
+}
+
+.text_center{
+    display: flex;    
+    justify-content: center;
+}
+
+.tarjetas{
+    display: flex;
+    padding: 50px;
+}
+
+.mat-card-content{
+    padding-top: 10px;
+    font-size: 1rem;
+}
+
+.actions{
+    display: flex;
+}
+

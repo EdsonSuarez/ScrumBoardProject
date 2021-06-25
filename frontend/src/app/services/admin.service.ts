@@ -19,10 +19,17 @@ export class AdminService {
   listUsers() {
     return this.http.get<any>(this.env + "user/listUsers");
   }
+
   updateUser(user: any){
     return this.http.put<any>(this.env + 'user/updateUser', user);
   }
+
   deleteUser(user: any){
     return this.http.delete<any>(this.env + 'user/deleteUser/' + user._id)
   }
+
+  listRole() {
+    return this.http.get<any>(this.env + "role/listRole");
+  }
+
 }
