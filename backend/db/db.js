@@ -15,4 +15,6 @@ const dbConnection = async () => {
   }
 };
 
+mongoose.set("useFindAndModify", false);
+
 module.exports = { dbConnection };

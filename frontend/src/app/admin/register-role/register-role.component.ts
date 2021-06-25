@@ -31,8 +31,8 @@ export class RegisterRoleComponent implements OnInit {
         },
         (err) => {
           this.errorMessage = err.error;
-          this.dataRole = {};
           this.closeAlert();
+          this.dataRole = {};
         }
       );
     }
