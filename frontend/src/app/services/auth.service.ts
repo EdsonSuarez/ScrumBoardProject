@@ -12,6 +12,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
     this.env = environment.APP_URL;
   }
+  
   registerUser(user: any) {
     return this.http.post(this.env + 'user/registerUser', user);
   }
@@ -28,22 +29,20 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  isAdmin(){
+  isAdmin() {
     let jwtToken = localStorage.getItem('token');
-    if (jwtToken == null){
-      return
-    } 
-    else {
+    if (jwtToken == null) {
+      return;
+    } else {
       let jwtData = jwtToken.split('.')[1];
-      let decodedJwtJsonData = window.atob(jwtData)
-      let decodedJwtData = JSON.parse(decodedJwtJsonData)
-      return (decodedJwtData.roleId.name !== 'admin') ? false : true;
+      let decodedJwtJsonData = window.atob(jwtData);
+      let decodedJwtData = JSON.parse(decodedJwtJsonData);
+      return decodedJwtData.roleId.name !== 'admin' ? false : true;
     }
-}
-  
+  }
+
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem("perfil");
     this.router.navigate(['/login']);
   }
 }

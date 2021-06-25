@@ -36,18 +36,13 @@ export class RegisterComponent implements OnInit {
         (res: any) => {
           console.log(res);
           localStorage.setItem('token', res.jwtToken);
-          if(res.admin) {
-            localStorage.setItem('perfil', 'isAdmin');
-          }
           this.registerData = {};
           this.router.navigate(['/saveTask']);
-
         },
         (err) => {
           console.log(err);
           this.errorMessage = err.error;
           this.registerData = {};
-
         }
       );
     }

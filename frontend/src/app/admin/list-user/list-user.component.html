@@ -51,30 +51,28 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-panel-description>
-            <ul>
-              {{
-                user.email
-              }}
-            </ul>
-            <ul>
-              {{
-                user.active
-              }}
-            </ul>
-            <ul>
-              {{
-                user.date
-              }}
-            </ul>
-            <span class="spacer"></span>
-            <ul>
-              {{
-                user.roleId.name
-              }}
-            </ul>
+            <div class="row">
+              <div class="col-lg-5">{{ user.email }}</div>
+              <div class="col-lg-2" [class.text-success]="user.active">
+                {{ user.active ? "Activo" : "Inactivo" }}
+              </div>
+              <div class="col-lg-2">{{ user.date | date: "dd-MM-yyyy" }}</div>
+              <div class="col-lg-3">
+                {{ user.roleId.name }}
+              </div>
+            </div>
           </mat-panel-description>
           <mat-action-row>
             <span class="spacer"></span>
+            <mat-icon class="text-warning" (click)="changeStatus(user)">
+              {{ user.active ? "toggle_on" : "toggle_off" }}
+            </mat-icon>
+            <mat-icon
+              class="text-success"
+              routerLink="/updateUser/{{ user._id }}"
+            >
+              edit
+            </mat-icon>
             <mat-icon color="primary" (click)="deleteUser(user)">
               delete
             </mat-icon>

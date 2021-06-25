@@ -31,9 +31,8 @@ login() {
           console.log(res);
           localStorage.setItem('token', res.jwtToken);
           if(this.auth.isAdmin()) {
-            localStorage.setItem('perfil', 'isAdmin');
             this.router.navigate(['/registerUser']);
-          }else{
+          } else {
             this.router.navigate(['/listTasks']);
           }
         },

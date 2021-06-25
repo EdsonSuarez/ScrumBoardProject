@@ -20,12 +20,20 @@ export class AdminService {
     return this.http.get<any>(this.env + 'user/listUsers');
   }
 
+  getUser(id: String) {
+    return this.http.get<any>(this.env + `user/getUser/${id}`);
+  }
+
   updateUser(user: any) {
     return this.http.put<any>(this.env + 'user/updateUser', user);
   }
 
   deleteUser(user: any) {
     return this.http.delete<any>(this.env + 'user/deleteUser/' + user._id);
+  }
+
+  emailUser(email: String) {
+    return this.http.get<any>(this.env + `user/emailUser/${email}`);
   }
 
   listRole() {
