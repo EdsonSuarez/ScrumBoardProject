@@ -32,8 +32,7 @@ export class ListRoleComponent implements OnInit {
     )
   }
 
-  deleteRol(task: any){
-    console.log(task)    
+  deleteRol(task: any){  
     if(task.name == "admin" || task.name == "user" || task.active == false){
       this.errorMessage = 'this user does not delete'
       this.closeAlert();      
