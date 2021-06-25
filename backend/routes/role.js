@@ -55,7 +55,7 @@ router.put("/updateRole", Auth, UserAuth, AdminAuth, async (req, res) => {
   return res.status(200).send({ role });
 });
 
-router.put("/deleteRole", Auth, UserAuth, AdminAuth, async (req, res) => {
+router.put("/deleteRole", Auth, UserAuth, AdminAuth, async (req, res) => {  
   if (!req.body._id)
     return res.status(401).send("Process failed: Incomplete data");
 

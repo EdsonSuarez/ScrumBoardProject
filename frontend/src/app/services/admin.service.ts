@@ -35,4 +35,9 @@ export class AdminService {
   registerRole(role: any){
     return this.http.post<any>(this.env + 'role/registerRole', role);
   }
+  
+  deleteRole(role: any){
+    return this.http.put<any>(this.env + 'role/deleteRole', role);
+  }
+  
 }

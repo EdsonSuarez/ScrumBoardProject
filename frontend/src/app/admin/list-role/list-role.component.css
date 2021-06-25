@@ -2,12 +2,6 @@
     flex: 1 0 auto;
 }
 
-.mat-icon {
-    padding-right: 15px;
-    color: #ff0000;
-    cursor: pointer;
-}
-
 .container{    
     padding-top: 50px;
 }
@@ -31,7 +25,7 @@
 }
 
 .mat-card-content{
-    padding-top: 10px;
+    padding-top: 11px;
     font-size: 1rem;
 }
 
@@ -39,3 +33,30 @@
     display: flex;
 }
 
+.delete{
+    padding-right: 15px;
+    color: #ff0000;
+    cursor: pointer;
+}
+
+.edit{
+    padding-right: 15px;
+    color: #c4c236;
+    cursor: pointer;
+}
+
+.active{
+    color: green;
+}
+
+.deactive{
+    color: red;
+}
+
+.alert{
+    display: flex;
+}
+
+.alerta{    
+    width: 500px;
+}
