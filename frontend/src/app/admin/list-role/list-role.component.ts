@@ -1,5 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-list-role',
@@ -12,7 +14,7 @@ export class ListRoleComponent implements OnInit {
   public errorMessage: String;
   public successMessage: String;
 
-  constructor(private admin: AdminService) { 
+  constructor(private admin: AdminService, private router: Router) { 
     this.rolesData = {};
     this.errorMessage = '';
     this.successMessage = '';
@@ -32,8 +34,30 @@ export class ListRoleComponent implements OnInit {
     )
   }
 
-  deleteRol(){
+  deleteRol(task: any){
+    console.log(task)    
+    if(task.name == "admin" || task.name == "user" || task.active == false){
+      this.errorMessage = 'this user does not delete'
+      this.closeAlert();      
+    }else{
+      this.admin.deleteRole(task).subscribe(
+        (res)=>{
+          console.log(res);
+          task.active = false;  
+          this.successMessage = 'Role Delete';
+          this.closeAlert();        
+        },
+        (err)=>{
+          console.log(err)
+          this.errorMessage = err.error;
+          this.closeAlert();  
+        }
+      )
+    }
+  }
 
+  updateTask(){
+    this.router.navigate(['/updateRole'])
   }
 
   closeAlert() {
