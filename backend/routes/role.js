@@ -7,7 +7,7 @@ const Auth = require("../middleware/auth");
 const UserAuth = require("../middleware/user");
 const AdminAuth = require("../middleware/admin");
 
-router.post("/registerRole", async (req, res) => {
+router.post("/registerRole", Auth, UserAuth, AdminAuth, async (req, res) => {
   if (!req.body.name || !req.body.description)
     return res.status(401).send("Process failed: Incomplete data");
   const roleExists = await Role.findOne({ name: req.body.name });
@@ -24,14 +24,13 @@ router.post("/registerRole", async (req, res) => {
   return res.status(200).send({ result });
 });
 
-router.get("/listRole", async (req, res) => {
+router.get("/listRole", Auth, UserAuth, AdminAuth, async (req, res) => {
   const role = await Role.find();
   if (!role) return res.status(401).send("No roles");
   return res.status(200).send({ role });
 });
 
-// Auth, UserAuth, AdminAuth,
-router.put("/updateRole", async (req, res) => {
+router.put("/updateRole", Auth, UserAuth, AdminAuth, async (req, res) => {
   if (!req.body._id || !req.body.name || !req.body.description)
     return res.status(401).send("Process failed: Incomplete data");
 
@@ -56,7 +55,7 @@ router.put("/updateRole", async (req, res) => {
   return res.status(200).send({ role });
 });
 
-router.put("/deleteRole", async (req, res) => {
+router.put("/deleteRole", Auth, UserAuth, AdminAuth, async (req, res) => {
   if (!req.body._id)
     return res.status(401).send("Process failed: Incomplete data");
 
@@ -78,7 +77,7 @@ router.put("/deleteRole", async (req, res) => {
   return res.status(200).send({ role });
 });
 
-router.delete("/deleteRole/:_id?", async (req, res) => {
+router.delete("/deleteRole/:_id?", Auth, UserAuth, AdminAuth, async (req, res) => {
   let validId = mongoose.Types.ObjectId.isValid(req.params._id);
   if (!validId) return res.status(401).send("Process failed: Invalid id");
 
