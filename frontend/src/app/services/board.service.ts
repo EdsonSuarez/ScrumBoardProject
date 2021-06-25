@@ -19,10 +19,12 @@ export class BoardService {
   listTask() {
     return this.http.get<any>(this.env + "board/listTask");
   }
-  updateTask(board: any){
+
+  updateTask(board: any) {
     return this.http.put<any>(this.env + 'board/updateTask', board);
   }
-  deleteTask(board: any){
+
+  deleteTask(board: any) {
     return this.http.delete<any>(this.env + 'board/deleteTask/' + board._id)
   }
 }
