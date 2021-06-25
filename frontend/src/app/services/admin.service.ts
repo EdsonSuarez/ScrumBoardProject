@@ -25,4 +25,7 @@ export class AdminService {
   deleteUser(user: any){
     return this.http.delete<any>(this.env + 'user/deleteUser/' + user._id)
   }
+  registerRole(role: any){
+    return this.http.post<any>(this.env + 'role/registerRole', role);
+  }
 }
